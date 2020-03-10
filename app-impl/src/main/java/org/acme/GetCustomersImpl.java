@@ -1,16 +1,23 @@
 package org.acme;
 
 import javax.enterprise.context.ApplicationScoped;
-import java.util.Arrays;
+import javax.inject.Inject;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @ApplicationScoped
 public class GetCustomersImpl implements GetCustomers {
+    private CustomerGateway customerGateway;
+
+    @Inject
+    public GetCustomersImpl(CustomerGateway customerGateway) {
+        this.customerGateway = customerGateway;
+    }
+
     @Override
     public List<Response> getCustomer() {
-        return Arrays.asList(
-                new GetCustomers.Response("Joe"),
-                new GetCustomers.Response("Jim")
-        );
+        return customerGateway.getAllCustomers().stream()
+                .map(customer -> new GetCustomers.Response(customer.getName()))
+                .collect(Collectors.toList());
     }
 }
