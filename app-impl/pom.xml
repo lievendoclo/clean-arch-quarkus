@@ -18,9 +18,5 @@
       <groupId>org.acme</groupId>
       <artifactId>domain</artifactId>
     </dependency>
-    <dependency>
-      <groupId>jakarta.enterprise</groupId>
-      <artifactId>jakarta.enterprise.cdi-api</artifactId>
-    </dependency>
   </dependencies>
 </project>

@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 public class CustomerGatewayImpl implements CustomerGateway {
 	@Override
 	public List<Customer> getAllCustomers() {
-		return CustomerJpa.<CustomerJpa>findAll().list().stream()
+		return CustomerJpa.<CustomerJpa>listAll().stream()
 				.map(c -> new Customer(c.getName()))
 				.collect(Collectors.toList());
 	}
