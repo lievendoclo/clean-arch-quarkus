@@ -2,14 +2,14 @@ package org.acme;
 
 import javax.enterprise.inject.Produces;
 
-public class Persistence {
+class Persistence {
 	@Produces
-	public CustomerGateway customerGateway(CustomerRepository customerRepository) {
+	CustomerGateway customerGateway(CustomerRepository customerRepository) {
 		return new CustomerGatewayImpl(customerRepository);
 	}
 
 	@Produces
-	public CustomerRepository customerRepository() {
+	CustomerRepository customerRepository() {
 		return new CustomerRepository();
 	}
 }

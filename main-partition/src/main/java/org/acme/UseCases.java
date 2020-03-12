@@ -4,11 +4,11 @@ import javax.enterprise.inject.Produces;
 import javax.inject.Singleton;
 import javax.transaction.Transactional;
 
-public class UseCases {
+class UseCases {
 	@Produces
 	@Singleton
 	@Transactional
-	public GetCustomers getCustomers(CustomerGateway customerGateway) {
+	GetCustomers getCustomers(CustomerGateway customerGateway) {
 		return new GetCustomersImpl(customerGateway);
 	}
 }
