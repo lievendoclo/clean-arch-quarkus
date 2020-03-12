@@ -5,7 +5,6 @@ import javax.inject.Singleton;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Singleton
 public class CustomerGatewayImpl implements CustomerGateway {
 	private CustomerRepository customerRepository;
 

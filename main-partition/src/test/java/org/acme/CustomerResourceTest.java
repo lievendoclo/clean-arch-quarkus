@@ -16,6 +16,6 @@ public class CustomerResourceTest {
 				.then()
 				.statusCode(200)
 				.body("$.size()", is(3),
-						"name", containsInAnyOrder("Joe", "Jim"));
+						"name", containsInAnyOrder("Joe", "Jim", "Anna"));
 	}
 }
