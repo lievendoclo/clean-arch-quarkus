@@ -19,8 +19,20 @@ public class CustomerResource {
 
     @GET
     public List<JsonCustomer> list() {
-        return getCustomers.getCustomer().stream()
+        return getCustomers.getCustomers().stream()
                 .map(response -> new JsonCustomer(response.getName()))
                 .collect(Collectors.toList());
+    }
+
+    public static class JsonCustomer {
+        private String name;
+
+        public JsonCustomer(String name) {
+            this.name = name;
+        }
+
+        public String getName() {
+            return name;
+        }
     }
 }

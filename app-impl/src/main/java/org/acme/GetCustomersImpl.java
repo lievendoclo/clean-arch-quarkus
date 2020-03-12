@@ -14,7 +14,7 @@ public class GetCustomersImpl implements GetCustomers {
     }
 
     @Override
-    public List<Response> getCustomer() {
+    public List<Response> getCustomers() {
         return customerGateway.getAllCustomers().stream()
                 .map(customer -> new GetCustomers.Response(customer.getName()))
                 .collect(Collectors.toList());

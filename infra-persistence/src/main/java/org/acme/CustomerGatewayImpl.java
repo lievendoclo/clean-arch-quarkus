@@ -1,11 +1,11 @@
 package org.acme;
 
-import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
+import javax.inject.Singleton;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@ApplicationScoped
+@Singleton
 public class CustomerGatewayImpl implements CustomerGateway {
 	private CustomerRepository customerRepository;
 

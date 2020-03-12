@@ -21,6 +21,15 @@
     <surefire-plugin.version>2.22.1</surefire-plugin.version>
   </properties>
 
+  <licenses>
+    <license>
+      <name>AGPL 3.0</name>
+      <url>http://opensource.org/licenses/AGPL-3.0</url>
+    </license>
+  </licenses>
+
+  <url>https://www.sourced-bvba.be</url>
+
   <modules>
     <module>app-api</module>
     <module>app-impl</module>

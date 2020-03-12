@@ -2,8 +2,8 @@ package org.acme;
 
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 
-import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Singleton;
 
-@ApplicationScoped
+@Singleton
 public class CustomerRepository implements PanacheRepository<CustomerJpa> {
 }
