@@ -1,4 +1,4 @@
-package org.acme;
+package org.acme.domain.customer;
 
 public class Customer {
 	private String name;

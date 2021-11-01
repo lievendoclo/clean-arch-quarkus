@@ -1,4 +1,6 @@
-package org.acme;
+package org.acme.infra.web.rest;
+
+import org.acme.app.query.GetCustomersQuery;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -11,9 +13,9 @@ import java.util.stream.Collectors;
 @Produces(MediaType.APPLICATION_JSON)
 public class CustomerResource {
 
-    private GetCustomers getCustomers;
+    private GetCustomersQuery getCustomers;
 
-    public CustomerResource(GetCustomers getCustomers) {
+    public CustomerResource(GetCustomersQuery getCustomers) {
         this.getCustomers = getCustomers;
     }
 

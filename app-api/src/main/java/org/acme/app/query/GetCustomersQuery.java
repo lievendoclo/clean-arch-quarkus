@@ -1,8 +1,8 @@
-package org.acme;
+package org.acme.app.query;
 
 import java.util.List;
 
-public interface GetCustomers {
+public interface GetCustomersQuery {
     List<Response> getCustomers();
 
     class Response {

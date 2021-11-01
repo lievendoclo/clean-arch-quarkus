@@ -1,4 +1,4 @@
-package org.acme;
+package org.acme.infra.web.model;
 
 public class JsonCustomer {
     private String name;

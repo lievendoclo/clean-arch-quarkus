@@ -1,4 +1,4 @@
-package org.acme;
+package org.acme.app;
 
 import javax.enterprise.inject.Stereotype;
 import javax.inject.Singleton;

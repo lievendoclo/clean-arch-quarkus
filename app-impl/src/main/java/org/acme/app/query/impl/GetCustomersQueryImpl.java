@@ -1,22 +1,27 @@
-package org.acme;
+package org.acme.app.query.impl;
+
+import org.acme.app.query.GetCustomersQuery;
+import org.acme.domain.customer.CustomerGateway;
+import org.acme.app.UseCase;
 
 import javax.inject.Inject;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
 @UseCase
-public class GetCustomersImpl implements GetCustomers {
+public class GetCustomersQueryImpl implements GetCustomersQuery {
     private CustomerGateway customerGateway;
 
     @Inject
-    public GetCustomersImpl(CustomerGateway customerGateway) {
+    public GetCustomersQueryImpl(CustomerGateway customerGateway) {
         this.customerGateway = customerGateway;
     }
 
     @Override
     public List<Response> getCustomers() {
         return customerGateway.getAllCustomers().stream()
-                .map(customer -> new GetCustomers.Response(customer.getName()))
+                .map(customer -> new GetCustomersQuery.Response(customer.getName()))
                 .collect(Collectors.toList());
     }
 }
