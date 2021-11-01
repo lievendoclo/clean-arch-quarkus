@@ -1,0 +1,78 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath "io.quarkus:gradle-application-plugin:2.4.0.Final"
+    }
+}
+
+subprojects {
+    apply plugin: "java"
+    apply plugin: "idea"
+
+    sourceCompatibility = 11
+    targetCompatibility = 11
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+
+
+    dependencies {
+        implementation enforcedPlatform("${quarkusPlatformGroupId}:${quarkusPlatformArtifactId}:${quarkusPlatformVersion}")
+        implementation "jakarta.enterprise:jakarta.enterprise.cdi-api"
+    }
+}
+
+project(":application:api") {
+}
+
+project(":application:usecases") {
+    dependencies {
+        implementation project(":application:api")
+        implementation project(":application:domain")
+
+        implementation "jakarta.transaction:jakarta.transaction-api"
+    }
+}
+
+project(":application:domain") {
+}
+
+project(":infrastructure:web") {
+    dependencies {
+        implementation project(":application:api")
+        implementation "io.quarkus:quarkus-resteasy-jackson"
+        implementation "io.quarkus:quarkus-smallrye-graphql"
+    }
+}
+
+project(":infrastructure:persistence") {
+    dependencies {
+        implementation project(":application:domain")
+        implementation "io.quarkus:quarkus-agroal"
+        implementation "io.quarkus:quarkus-jdbc-mariadb"
+        implementation "io.quarkus:quarkus-flyway"
+        implementation "org.jdbi:jdbi3-core:3.23.0"
+    }
+}
+
+project(":main-partition") {
+    apply plugin: "io.quarkus"
+
+    dependencies {
+        implementation project(":application:api")
+        implementation project(":application:usecases")
+        implementation project(":application:domain")
+        implementation project(":infrastructure:persistence")
+        implementation project(":infrastructure:web")
+        implementation "io.quarkus:quarkus-resteasy"
+        implementation 'io.quarkus:quarkus-container-image-docker'
+    }
+}

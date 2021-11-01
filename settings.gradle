@@ -1,0 +1,6 @@
+include "application:domain"
+include "application:api"
+include "application:usecases"
+include "infrastructure:web"
+include "infrastructure:persistence"
+include "main-partition"
