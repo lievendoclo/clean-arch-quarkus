@@ -1,7 +1,7 @@
 package org.acme.infra.web.graphql;
 
 import org.acme.infra.web.model.JsonCustomer;
-import org.acme.app.query.GetCustomersQuery;
+import org.acme.app.query.GetCustomers;
 import org.eclipse.microprofile.graphql.GraphQLApi;
 import org.eclipse.microprofile.graphql.Query;
 import org.eclipse.microprofile.graphql.Description;
@@ -12,9 +12,9 @@ import java.util.List;
 @GraphQLApi
 public class CustomerGraphQLQuery {
 
-    private GetCustomersQuery getCustomers;
+    private GetCustomers getCustomers;
 
-    public CustomerGraphQLQuery(GetCustomersQuery getCustomers) {
+    public CustomerGraphQLQuery(GetCustomers getCustomers) {
         this.getCustomers = getCustomers;
     }
 

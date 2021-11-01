@@ -2,7 +2,7 @@ package org.acme.app.query;
 
 import java.util.List;
 
-public interface GetCustomersQuery {
+public interface GetCustomers {
     List<Response> getCustomers();
 
     class Response {
