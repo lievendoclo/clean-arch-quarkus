@@ -1,7 +1,7 @@
 CREATE TABLE customer
 (
-  id   INT PRIMARY KEY,
+  id   VARCHAR(200) PRIMARY KEY,
   name VARCHAR(20)
 );
-INSERT INTO customer(id, name) VALUES (1, 'John Doe');
-INSERT INTO customer(id, name) VALUES (2, 'Jane Doe');
+INSERT INTO customer(id, name) VALUES ('one', 'John Doe');
+INSERT INTO customer(id, name) VALUES ('two', 'Jane Doe');

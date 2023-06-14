@@ -1,19 +1,7 @@
-package org.acme.app.query;
+package org.acme.app.query
 
-import java.util.List;
+interface GetCustomersQuery {
+    fun customers(): List<Response>
 
-public interface GetCustomersQuery {
-    List<Response> getCustomers();
-
-    class Response {
-        private String name;
-
-        public Response(String name) {
-            this.name = name;
-        }
-
-        public String getName() {
-            return name;
-        }
-    }
+    class Response(val id: String, val name: String)
 }
