@@ -11,8 +11,8 @@ import java.util.stream.Collectors
 @ApplicationScoped
 @Transactional
 class GetCustomersQueryImpl @Inject constructor(private val customerGateway: CustomerGateway) : GetCustomersQuery {
-    override fun customers(): List<GetCustomersQuery.Response> {
-        return customerGateway.allCustomers()
-            .map { GetCustomersQuery.Response(it.id, it.name) }
+    override fun <T> customers(presenter: (List<GetCustomersQuery.Response>) -> T): T{
+        return presenter(customerGateway.allCustomers()
+            .map { GetCustomersQuery.Response(it.id, it.name) })
     }
 }

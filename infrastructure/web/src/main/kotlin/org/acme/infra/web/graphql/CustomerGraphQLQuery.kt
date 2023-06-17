@@ -20,15 +20,16 @@ class CustomerGraphQLQuery(
     @Description("Get all customers")
     @Query("customers")
     fun allCustomers(): List<JsonCustomer> {
-        return getCustomers.customers()
-           .map { JsonCustomer(it.id, it.name) }
+        return getCustomers.customers {
+            it.map { c -> JsonCustomer(c.id, c.name) }
+        }
     }
 
     @Description("Create a customer")
     @Mutation("createCustomer")
     fun createCustomer(name: String): JsonCustomer {
         val id = createCustomerCommand.create(CreateCustomerCommand.Request(name)).id
-        return getCustomer.customer(GetCustomerQuery.Request(id)).let {
+        return getCustomer.customer(GetCustomerQuery.Request(id)) {
             JsonCustomer(it.id, it.name)
         }
     }

@@ -13,9 +13,9 @@ import java.util.stream.Collectors
 @ApplicationScoped
 @Transactional
 class GetCustomerQueryImpl @Inject constructor(private val customerGateway: CustomerGateway) : GetCustomerQuery {
-    override fun customer(request: GetCustomerQuery.Request): GetCustomerQuery.Response {
-        return with(customerGateway.customerById(request.id)) {
+    override fun <T> customer(request: GetCustomerQuery.Request, presenter: (GetCustomerQuery.Response) -> T): T {
+        return presenter(with(customerGateway.customerById(request.id)) {
             GetCustomerQuery.Response(id, name)
-        }
+        })
     }
 }

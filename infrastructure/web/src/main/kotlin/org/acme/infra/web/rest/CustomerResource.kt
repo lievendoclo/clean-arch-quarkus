@@ -21,15 +21,17 @@ class CustomerResource(
 {
     @GET
     fun list(): List<JsonCustomer> {
-        return getCustomers.customers()
-            .map { JsonCustomer(it.id, it.name) }
+        return getCustomers.customers {
+            it.map { c -> JsonCustomer(c.id, c.name) }
+        }
+
     }
 
     @GET
     @Path("{id}")
     fun get(@PathParam("id") id: String): JsonCustomer {
-        return with(getCustomer.customer(GetCustomerQuery.Request(id))) {
-            JsonCustomer(this.id, this.name)
+        return getCustomer.customer(GetCustomerQuery.Request(id)) {
+            JsonCustomer(it.id, it.name)
         }
     }
 
